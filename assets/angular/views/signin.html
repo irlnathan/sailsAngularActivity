@@ -1,0 +1,43 @@
+<!-- No email or password -->
+<!-- <div class="alert alert-info toggle" ng-if="toggle">{{error.data[0].message}}</div>  -->
+
+<!-- Not authorized: Violation of sessionAuth policy -->
+<!-- <div class="alert alert-info toggle" ng-if="toggle">{{error.data.message}}</div>  -->
+
+<!-- user not in db  -->
+<!-- <div class="alert alert-info toggle" ng-if="toggle">{{error.data[0].message}}</div>  -->
+
+<div class="alert alert-info toggle" ng-if="toggle">{{error.data[0].message}}</div> 
+
+<form ng-submit="signInUser()" class="form-signin">
+    <h2 class="form-signin-heading">Please sign in...</h2>
+
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="email"
+                class="form-control"                            
+                placeholder="Email"
+                name="email" ng-model="session.email"
+            />
+        </div>
+    </div>
+            
+    <div class="form-group">
+        <div class="input-group">
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-lock"></span>
+            </span>
+            <input type="password"
+                class="form-control"                            
+                placeholder="Password"
+                name="password"
+
+                ng-model="session.password"
+            />
+        </div>
+    </div>
+
+    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign-in"/>
+    <input type="hidden" name="_csrf" value="<%= _csrf %>" />
+</form>
