@@ -33,10 +33,17 @@
 
 				<div id="signinout" ng-controller="signinController">
 					<!-- navbar-right pulls this element right -->
-		            <a ng-cloak class="btn btn-default navbar-btn navbar-right" ng-if="isAuthenticated" ng-click="signOutUser()">sign-out</a>
+					<!-- Using ng-show instead of ng-if because we need this mark-up to be in the dom when signup controller
+					fires.  If it's not there (which it wouldn't be in the case of ng-if) then the scope of the signup
+					controller will not be tied to this element. -->
+		            <a ng-cloak class="btn btn-default navbar-btn navbar-right" ng-show="isAuthenticated" ng-click="signOutUser()">sign-out</a>
 		            <!-- <a ng-controller="signinController" class="btn btn-default navbar-btn navbar-right" href="#" ng-if="!isAuthenticated">sign-in</a> -->
 
-		            <form  ng-cloak ng-if="!isAuthenticated" class="navbar-form navbar-right" ng-submit="signInUser()">
+
+		            <!-- Using ng-show instead of ng-if because we need this mark-up to be in the dom when signup controller
+					fires.  If it's not there (which it wouldn't be in the case of ng-if) then the scope of the signup
+					controller will not be tied to this element. -->
+		            <form  ng-cloak ng-show="!isAuthenticated" class="navbar-form navbar-right" ng-submit="signInUser()">
 	            		<div class="form-group">
 	              			<input type="email" placeholder="Email" name="email" class="form-control" ng-model="session.email">
 	            		</div>
@@ -46,16 +53,15 @@
 	            		<input type="submit" class="btn btn-success" />Sign in
 	            		<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 	          		</form>
+	          		<div  class="alert alert-info toggle" ng-show="toggle">This is the error: {{error.data[0].message}}</div>
 	          	</div>
           	</div>
     	</nav> 
 
-    	<div class="alert alert-info toggle" ng-if="toggle">{{error.data[0].message}}</div>
+    	
 
     	<!-- start partials -->
 		<div ng-view></div>
-
-
 
 	</div>
 

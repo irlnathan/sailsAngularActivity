@@ -1,11 +1,11 @@
-activityApp.controller('signinController', function($rootScope, $scope, $http, $q, $routeParams, $location){
+angular.module('activityApp').controller('signinController', function($rootScope, $scope, $http, $q, $routeParams, $location){
 	// console.log('root in signin', $rootScope);
 	// console.log('scope in signin', $scope);
-	console.log('scope', $scope);
+	// console.log('scope', $scope);
 
 	$scope.signInUser = function() {
 
-		console.log("These are the params: ", $routeParams);
+		// console.log("These are the params: ", $routeParams);
 
 		var deferred = $q.defer();	
 	
@@ -22,7 +22,7 @@ activityApp.controller('signinController', function($rootScope, $scope, $http, $
         $http.post(url, $scope.session).success(deferred.resolve).error(deferred.reject)
         	.then(function (result) {
 
-        		console.log("made it")
+        		// console.log("made it")
 
         		// If successful go ahead and tell the front-end you're authenticated for the purposes of displaying the ui.
         		$rootScope.isAuthenticated = true;
@@ -35,6 +35,7 @@ activityApp.controller('signinController', function($rootScope, $scope, $http, $
 				$scope.toggle = true;
 				$scope.error = error;
 
+				console.log($scope.toggle);
 				console.log("The error: ", error);
 			});
 
@@ -57,7 +58,7 @@ activityApp.controller('signinController', function($rootScope, $scope, $http, $
 
         		// If successful go ahead and tell the front-end you're logged-out for the purposes of displaying the ui.
         		$rootScope.isAuthenticated = false;
-				// $location.path( "/");
+			 $location.path( "/");
 			}, function (error) {
 				// console.log("This is the error: ", error);
 				$scope.toggle = true;

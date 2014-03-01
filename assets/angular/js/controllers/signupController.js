@@ -1,4 +1,4 @@
-activityApp.controller('signupController', function($scope, $http, $q, $routeParams, $location){
+angular.module('activityApp').controller('signupController', function($scope, $http, $q, $routeParams, $location){
 
 	$scope.createUser = function() {
 

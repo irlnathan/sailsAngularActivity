@@ -1,4 +1,4 @@
-activityApp.controller('userController', function($scope, userService, usersService, $routeParams) {
+angular.module('activityApp').controller('userController', function($scope, userService, usersService, $routeParams) {
 	
 		init();
 

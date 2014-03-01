@@ -1,4 +1,4 @@
-activityApp.service('userService', function($http, $q){
+angular.module('activityApp').service('userService', function($http, $q){
 	// this.getUsers = function() {
 	// 	return users;
 	// };

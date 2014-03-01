@@ -122,10 +122,18 @@ module.exports = {
         });
     },
 
+    isAuthenticated: function(req, res, next) {
+
+        if(req.session.authenticated) {
+            res.json({authenticated: true});
+        } else {
+            res.json({authenticated: false});
+        }
+
+    },
+
 
     destroy: function(req, res, next) {
-
-        console.log("!!!!!!!!!!");
 
         User.findOne(req.session.User.id, function foundUser(err, user) {
         	
