@@ -37,6 +37,7 @@ angular.module('activityApp').controller('signinController', function($rootScope
 
 				console.log($scope.toggle);
 				console.log("The error: ", error);
+				console.log(error.data[0].message);
 			});
 
         // $scope.toggle = "true";
@@ -58,6 +59,7 @@ angular.module('activityApp').controller('signinController', function($rootScope
 
         		// If successful go ahead and tell the front-end you're logged-out for the purposes of displaying the ui.
         		$rootScope.isAuthenticated = false;
+        		console.log($rootScope);
 			 $location.path( "/");
 			}, function (error) {
 				// console.log("This is the error: ", error);

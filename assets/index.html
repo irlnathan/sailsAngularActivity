@@ -53,7 +53,13 @@
 	            		<input type="submit" class="btn btn-success" />Sign in
 	            		<input type="hidden" name="_csrf" value="<%= _csrf %>" />
 	          		</form>
-	          		<div  class="alert alert-info toggle" ng-show="toggle">This is the error: {{error.data[0].message}}</div>
+
+	          		<div ng-cloak class="alert alert-warning alert-dismissable toggle" ng-show="toggle" >
+	          			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+	          			<strong>Oops!:</strong> {{error.data[0].message}}
+	          		</div>
+
+	          		<!-- <div  class="alert alert-danger toggle" ng-show="toggle">Oops!: {{error.data[0].message}}</div> -->
 	          	</div>
           	</div>
     	</nav> 
