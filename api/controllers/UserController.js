@@ -17,6 +17,8 @@ module.exports = {
       confirmation: req.param('confirmation')
     }
 
+
+
     // console.log("Here is my userObj: ", userObj);
 
     // Create a User with the params sent from 
@@ -27,11 +29,15 @@ module.exports = {
       // if (err) return next(err);
 
       if (err) {
-        
+
+          console.log("This is err: ", err);
+          console.log("this is array check: ", Array.isArray(err));
         // The unique check
         if( Array.isArray(err) && err[0] instanceof Error ){
 
-          console.log(err.stack);
+//          console.log("This is the error.stack: ", err.stack);
+
+            console.log("This is err[0].message");
 
           err = {err: err[0].message};
         }
@@ -43,6 +49,8 @@ module.exports = {
 
         // If error redirect back to sign-up page
         return res.send(400, err);
+
+//          return res.send(500, {err: "yaya"});
       }
 
       // Log user in

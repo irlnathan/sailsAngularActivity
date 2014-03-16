@@ -18,7 +18,7 @@ module.exports.policies = {
   // (`true` allows public access) 
 
   user: {
-
+//    create: 'sessionAuth',
   	find: 'sessionAuth',
   	edit: 'sessionAuth',
   	update: 'sessionAuth'

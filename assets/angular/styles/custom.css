@@ -26,6 +26,7 @@ form .glyphicon {
 }
 
 .form-signin {
+position: relative;
 max-width: 30%;
 padding: 19px 29px 29px;
 margin: 0 auto 20px;
@@ -40,7 +41,13 @@ will ultimately load to make the ng-cloak display none until $compile thing runs
   display: none !important;
 }
 
+.signinError {
 
+ right: 67px;
+ top: 53px;
+ z-index: 100;
+
+}
 
 
 

@@ -43,7 +43,7 @@
 		            <!-- Using ng-show instead of ng-if because we need this mark-up to be in the dom when signup controller
 					fires.  If it's not there (which it wouldn't be in the case of ng-if) then the scope of the signup
 					controller will not be tied to this element. -->
-		            <form  ng-cloak ng-show="!isAuthenticated" class="navbar-form navbar-right" ng-submit="signInUser()">
+		            <form  ng-cloak novalidate ng-show="!isAuthenticated" class="navbar-form navbar-right" ng-submit="signInUser()">
 	            		<div class="form-group">
 	              			<input type="email" placeholder="Email" name="email" class="form-control" ng-model="session.email">
 	            		</div>
@@ -52,14 +52,13 @@
 	            		</div>
 	            		<input type="submit" class="btn btn-success" />Sign in
 	            		<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+
+	            		<div ng-cloak class="alert signinError alert-warning alert-dismissable toggle" ng-show="toggle" >
+	          				<button type="button" class="close" ng-click="toggle=false">&times;</button>
+	          				<strong>Oops!:</strong> {{error.data[0].message}}
+	          			</div>
 	          		</form>
 
-	          		<div ng-cloak class="alert alert-warning alert-dismissable toggle" ng-show="toggle" >
-	          			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-	          			<strong>Oops!:</strong> {{error.data[0].message}}
-	          		</div>
-
-	          		<!-- <div  class="alert alert-danger toggle" ng-show="toggle">Oops!: {{error.data[0].message}}</div> -->
 	          	</div>
           	</div>
     	</nav> 
